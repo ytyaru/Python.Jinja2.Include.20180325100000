@@ -33,3 +33,17 @@ print(res)
     * `{{ %Y-%m-%d %H:%M:%S }}`のようにしたい 
         * `%`はjinjaが予約しているため使えない？
             * `jinja2.exceptions.TemplateSyntaxError: unexpected '%'`
+    * `{{year}}`, `{{month}}`, などひとつずつやっていたら数が多すぎる
+        * `{{year}}-{{month}}-{{day}}`のように冗長になる
+            * ゼロ埋めしているものとしていないもの
+            * 曜日
+                * 数値
+                * 単語
+                    * 短縮
+                    * 英語
+                    * 日本語
+
+結局、`{{ '{0:%Y-%m-%d %H:%M:%S}'.format(now) }}`が一番マシ。
+
+`f''`にしたいのに。
+
